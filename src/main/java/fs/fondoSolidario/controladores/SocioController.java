@@ -84,7 +84,7 @@ public class SocioController {
 	}
 	
   @PutMapping("/{id}")
-    public ResponseEntity<?> updateProducto(@PathVariable String idsocio,
+    public ResponseEntity<?> updateSocio(@PathVariable String idsocio,
                                             @RequestBody Socio socio) {
         // Verifica si el producto existe
         Optional<Socio> socioOptional = this.socioService.getById(id);

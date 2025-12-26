@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registro de Prestamos</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet " href="../form-socio.css">
+</head>
+<body>
+
+	<div class="container m-5">
+	
+		<div th:if="${exito}!=null" class="card text-white bg-success mb-3">
+			<div class="card-body">
+				<h5 class="card-title">Exito</h5>
+				<p class="card-text" th:text="${exito}"></p>
+			</div>
+		</div>
+		<div th:if="${error}!=null" class="card text-white bg-danger mb-3">
+			<div class="card-body">
+				<h5 class="card-title">Error</h5>
+				<p class="card-text" th:text="${error}"></p>
+			</div>
+		</div>
+		<h1> Registro Coberturas</h1>
+	
+	<section>
+	<form th:action="@{/prestamo/registro}" method="POST" class="form">
+	
+	
+	<label>Nombre</label> 
+		<select class="form-control mb-3" name="idsocio">
+		<option th:each="socio : ${socios}" th:value="${socio.idsocio}" 
+		th:text="${socio.nombre} + ' ' + |${socio.apellido}">></option></select>
+		
+		
+	<label>Importe</label> 
+	<input type="number" class="form-control mb-3" name="montoSolicitado"placeholder="Monto Solicitado">
+	
+	
+	<label>Cantidad Cuotas</label>
+	 <input type="number" class="form-control mb-3" name="cantCuotas" placeholder="Cantidad Cuotas">
+					
+	<label>Tasa de Interes</label>
+	 <input type="number" class="form-control mb-3" name="tasaInteres"placeholder="Tasa Interes" >
+									
+					
+					
+	
+				
+	            
+	           <div class="col">
+				<button type="submit" class="btn btn-success">Guardar</button>
+				<a th:href="@{/}" class="btn btn-secondary">Volver</a>
+				</div>
+				
+			</form>
+	
+			<section />
+	
+	</div>
+
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
